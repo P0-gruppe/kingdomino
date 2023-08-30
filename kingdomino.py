@@ -4,7 +4,9 @@ import os
 
 # Main function containing the backbone of the program
 def main():
-    print("King Domino points calculator")
+    print("+-------------------------------+")
+    print("| King Domino points calculator |")
+    print("+-------------------------------+")
     image_path = r"C:\Users\admin\Downloads\King Domino dataset\1.jpg"
     if not os.path.isfile(image_path):
         print("Image not found")
