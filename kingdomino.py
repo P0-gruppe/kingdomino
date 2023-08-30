@@ -1,10 +1,14 @@
 import cv2 as cv
 import numpy as np
+import os
 
 # Main function containing the backbone of the program
 def main():
     print("King Domino points calculator")
     image_path = r"C:\Users\admin\Downloads\King Domino dataset\1.jpg"
+    if not os.path.isfile(image_path):
+        print("Image not found")
+        return
     image = cv.imread(image_path)
     tiles = get_tiles(image)
     print(len(tiles))
