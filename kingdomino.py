@@ -2,6 +2,17 @@ import cv2 as cv
 import numpy as np
 import os
 
+points = {
+    "Field": 0,
+    "Forest": 0,
+    "Lake": 0,
+    "Grassland": 0,
+    "Swamp": 0,
+    "Mine": 0,
+    "Home": 0,
+    "Table": 0,
+}
+
 
 # Main function containing the backbone of the program
 def main():
@@ -18,8 +29,10 @@ def main():
     for y, row in enumerate(tiles):
         for x, tile in enumerate(row):
             print(f"Tile ({x}, {y}):")
-            print(get_terrain(tile))
+            tile_type = get_terrain(tile)
+            points[tile_type] += 1
             print("=====")
+    print(points)
 
 
 # Break a board into tiles
@@ -39,21 +52,21 @@ def get_terrain(tile):
 
     print(f"H: {hue}, S: {saturation}, V: {value}")
 
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 22 < hue < 30 and 225 < saturation < 256 and 104 < value < 210:
         return "Field"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 28 < hue < 61 and 73 < saturation < 224 and 32 < value < 70:
         return "Forest"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 100 < hue < 110 and 210 < saturation < 256 and 107 < value < 195:
         return "Lake"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 33 < hue < 49 and 160 < saturation < 256 and 72 < value < 170:
         return "Grassland"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 17 < hue < 30 and 34 < saturation < 210 and 72 < value < 148:
         return "Swamp"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 19 < hue < 28 and 38 < saturation < 140 and 23 < value < 70:
         return "Mine"
-    if 0 < hue < 0 and 0 < saturation < 0 and 0 < value < 0:
+    if 16 < hue < 39 and 40 < saturation < 150 and 52 < value < 150:
         return "Home"
-    return "Unknown"
+    return "Table"
 
 
 if __name__ == "__main__":
