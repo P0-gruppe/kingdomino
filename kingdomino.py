@@ -19,7 +19,7 @@ def main():
     print("+-------------------------------+")
     print("| King Domino points calculator |")
     print("+-------------------------------+")
-    image_path = "./dataset/1.jpg"
+    image_path = "./dataset/pictures/1.jpg"
     if not os.path.isfile(image_path):
         print("Image not found")
         return
